@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyProjects extends StatefulWidget {
   const MyProjects({super.key});
@@ -28,11 +29,16 @@ class _MyProjectsState extends State<MyProjects> {
                 child: Card(
                   color: Color(0xff262628),
                   child: Container(
+                    margin: EdgeInsets.only(left: 20,right: 20,top: 30),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "FLUTTER",
                           style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Text(
                           "Click 2 Code",
@@ -44,7 +50,11 @@ class _MyProjectsState extends State<MyProjects> {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.star,color: Colors.white70,)
+                            Icon(Icons.star,color: Colors.white70,),
+                            Text("10",style: TextStyle(color: Colors.white70),),
+                            Expanded(child: Container()),
+                            IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.github,
+                            color: Colors.white,))
                           ],
                         ),
                       ],
