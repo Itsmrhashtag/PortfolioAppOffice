@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class MyHome extends StatefulWidget {
@@ -44,6 +45,9 @@ class _MyHomeState extends State<MyHome> {
                 icon,
                 color: Colors.white,
               ),
+              SizedBox(
+                height: 5,
+              ),
               Text(
                 tech,
                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -62,24 +66,35 @@ class _MyHomeState extends State<MyHome> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: PopupMenuButton(
-            color: Colors.white,
-            icon: Icon(Icons.menu),
-            itemBuilder: (context)=> [
-              PopupMenuItem(child: TextButton(
-                child: Text("Projects"),
-                onPressed: (){
-                  Navigator.pushNamed(context, 'project');
-                },
-              ),value: 1,
-              ),
-              PopupMenuItem(child: TextButton(
-                child: Text("About Me"),
-                onPressed: (){
-                  Navigator.pushNamed(context, 'about');
-                },
-              ),value: 2,
-              )
-            ]),
+            color: Colors.black,
+            icon: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+            itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: TextButton(
+                      child: Text(
+                        "Projects",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'project');
+                      },
+                    ),
+                    value: 1,
+                  ),
+                  PopupMenuItem(
+                    child: TextButton(
+                      child: Text("About Me",
+                          style: TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'about');
+                      },
+                    ),
+                    value: 2,
+                  )
+                ]),
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
@@ -101,33 +116,42 @@ class _MyHomeState extends State<MyHome> {
           child: Stack(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 35,left: 50,right: 50),
+                margin: EdgeInsets.only(top: 35, left: 50, right: 50),
                 child: ShaderMask(
                     shaderCallback: (rect) {
                       return LinearGradient(
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.black, Colors.transparent])
+                              begin: Alignment.center,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.black, Colors.transparent])
                           .createShader(
-                          Rect.fromLTRB(0, 0, rect.width, rect.height));
+                              Rect.fromLTRB(0, 0, rect.width, rect.height));
                     },
                     blendMode: BlendMode.dstIn,
                     child: Image.asset(
                       "images/dp.png",
-                      height: 400,
+                      height: 600,
                       fit: BoxFit.contain,
                     )),
               ),
               Container(
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.5,),
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.5,
+                ),
                 child: Column(
                   children: [
-                    Text("Pushpraj Kushwaha",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
+                    Text(
+                      "Pushpraj Kushwaha",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
-                    Text("Software Developer",style: TextStyle(color: Colors.white,fontSize: 20))
+                    Text("Software Developer",
+                        style: TextStyle(color: Colors.white, fontSize: 20))
                   ],
                 ),
               )
@@ -157,7 +181,6 @@ class _MyHomeState extends State<MyHome> {
                   ),
                   Text(
                     "Spacilized In",
-
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -168,9 +191,9 @@ class _MyHomeState extends State<MyHome> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          mySpac(Icons.android, "Android"),
-                          mySpac(Icons.android, "Android"),
-                          mySpac(Icons.android, "Android"),
+                          mySpac(FontAwesomeIcons.java, "JAVA"),
+                          mySpac(FontAwesomeIcons.database, "MySQL"),
+                          mySpac(FontAwesomeIcons.code, "Spring Boot"),
                         ],
                       ),
                       SizedBox(
@@ -179,9 +202,9 @@ class _MyHomeState extends State<MyHome> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          mySpac(Icons.android, "Android"),
-                          mySpac(Icons.android, "Android"),
-                          mySpac(Icons.android, "Android"),
+                          mySpac(FontAwesomeIcons.aws, "AWS"),
+                          mySpac(FontAwesomeIcons.linux, "Linux"),
+                          mySpac(FontAwesomeIcons.github, "Github"),
                         ],
                       ),
                       SizedBox(
@@ -190,7 +213,7 @@ class _MyHomeState extends State<MyHome> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          mySpac(Icons.android, "Android"),
+                          mySpac(FontAwesomeIcons.bug, "Testing"),
                           mySpac(Icons.android, "Android"),
                           mySpac(Icons.android, "Android"),
                         ],
@@ -201,8 +224,6 @@ class _MyHomeState extends State<MyHome> {
               ));
         },
       ),
-
     );
-
   }
 }

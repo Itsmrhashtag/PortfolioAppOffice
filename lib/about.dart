@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pdfx/pdfx.dart';
+import 'package:portfolioapp/pdfviewer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyAbout extends StatefulWidget {
   const MyAbout({super.key});
@@ -9,6 +13,43 @@ class MyAbout extends StatefulWidget {
 }
 
 class _MyAboutState extends State<MyAbout> {
+  // Future<void> _launchInBrowser(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.externalApplication,
+  //   )) {
+  //     throw Exception('Could not launch $url');
+  //   }
+  // }
+  _launchURL() async {
+    final Uri url = Uri.parse('https://www.instagram.com/mr_hashtag.jpeg/');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  _launchURLlinkedin() async {
+    final Uri url = Uri.parse('https://www.linkedin.com/in/pushprajkushwaha/');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  _launchURLgithub() async {
+    final Uri url = Uri.parse('https://github.com/Itsmrhashtag');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  _launchURLportfolio() async {
+    final Uri url =
+        Uri.parse('https://itsmrhashtag.github.io/portfolio_hashtag/');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +67,11 @@ class _MyAboutState extends State<MyAbout> {
               child: ShaderMask(
                   shaderCallback: (rect) {
                     return LinearGradient(
-                        begin: Alignment.center,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.black, Colors.transparent])
+                            begin: Alignment.center,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.black, Colors.transparent])
                         .createShader(
-                        Rect.fromLTRB(0, 0, rect.width, rect.height));
+                            Rect.fromLTRB(0, 0, rect.width, rect.height));
                   },
                   blendMode: BlendMode.dstIn,
                   child: Image.asset(
@@ -71,9 +112,15 @@ class _MyAboutState extends State<MyAbout> {
                   SizedBox(
                     width: 120,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PdfViewer()));
+                      },
                       child: Text("Hire Me"),
-                      style: TextButton.styleFrom(backgroundColor: Colors.white,primary: Colors.black),
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.white, primary: Colors.black),
                     ),
                   ),
                   SizedBox(
@@ -82,24 +129,41 @@ class _MyAboutState extends State<MyAbout> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.instagram,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.hashtag,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.twitter,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.linkedin,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.github,color: Colors.white,
-                      )),
+                      IconButton(
+                          onPressed: _launchURL,
+                          icon: Icon(
+                            FontAwesomeIcons.instagram,
+                            color: Colors.white,
+                          )),
+                      IconButton(
+                          onPressed: _launchURLportfolio,
+                          icon: Icon(
+                            FontAwesomeIcons.hashtag,
+                            color: Colors.white,
+                          )),
+                      IconButton(
+                          onPressed: () {
+                            FlutterPhoneDirectCaller.callNumber(
+                                "+918305330042");
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.phone,
+                            color: Colors.white,
+                          )),
+                      IconButton(
+                          onPressed: _launchURLlinkedin,
+                          icon: Icon(
+                            FontAwesomeIcons.linkedin,
+                            color: Colors.white,
+                          )),
+                      IconButton(
+                          onPressed: _launchURLgithub,
+                          icon: Icon(
+                            FontAwesomeIcons.github,
+                            color: Colors.white,
+                          )),
                     ],
                   ),
-
                 ],
               ),
             )

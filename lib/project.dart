@@ -29,7 +29,7 @@ class _MyProjectsState extends State<MyProjects> {
                 child: Card(
                   color: Color(0xff262628),
                   child: Container(
-                    margin: EdgeInsets.only(left: 20,right: 20,top: 30),
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -42,7 +42,10 @@ class _MyProjectsState extends State<MyProjects> {
                         ),
                         Text(
                           "Click 2 Code",
-                          style: TextStyle(color: Colors.white, fontSize: 38,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 38,
+                              fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "An online Compiler.",
@@ -50,11 +53,21 @@ class _MyProjectsState extends State<MyProjects> {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.star,color: Colors.white70,),
-                            Text("10",style: TextStyle(color: Colors.white70),),
+                            Icon(
+                              Icons.star,
+                              color: Colors.white70,
+                            ),
+                            Text(
+                              "10",
+                              style: TextStyle(color: Colors.white70),
+                            ),
                             Expanded(child: Container()),
-                            IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.github,
-                            color: Colors.white,))
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  FontAwesomeIcons.github,
+                                  color: Colors.white,
+                                ))
                           ],
                         ),
                       ],
